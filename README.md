@@ -46,17 +46,7 @@ This repository contains a script that automates the synchronization of Satisfac
         - Replace `<YourSteamID>` with your Steam ID (found in the save file directory).
         - Replace `YourSaveFileName.sav` with the name of your Satisfactory save file.
 
-3. **Set Execution Policy (If Necessary)**
-
-    To allow the script to run, you might need to adjust your PowerShell execution policy:
-
-    ```powershell
-    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-    ```
-
-    **Note**: Be cautious when changing execution policies and ensure you understand the implications.
-
-4. **Configure Steam Launch Options**
+3. **Configure Steam Launch Options**
 
     - Open Steam and navigate to your game library.
     - Right-click on **Satisfactory** and select **Properties**.
