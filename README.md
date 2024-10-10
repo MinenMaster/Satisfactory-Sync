@@ -63,7 +63,7 @@ This repository contains a script that automates the synchronization of Satisfac
     - Under **Launch Options**, enter the following:
 
         ```bash
-        powershell -ExecutionPolicy Bypass -File "C:\Path\To\Your\script.ps1"
+        powershell -ExecutionPolicy Bypass -File "C:\Path\To\Your\script.ps1" %command%
         ```
 
         - Replace `C:\Path\To\Your\script.ps1` with the actual path to your script file.
