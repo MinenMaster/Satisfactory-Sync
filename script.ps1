@@ -1,26 +1,28 @@
+param([String]$game="")
+
 # Define variables
 $repoPath = "C:\Path\To\Your\Repo"  # Path where the GitHub repository is cloned
 $savePath = "C:\Users\<YourUsername>\AppData\Local\FactoryGame\Saved\SaveGames\<YourSteamID>"
 $saveFile = "YourSaveFileName.sav"
 
 # Pull the latest save file
-cd $repoPath
+Set-Location $repoPath
 git pull origin main
 Copy-Item "$repoPath\$saveFile" "$savePath\$saveFile" -Force
 
 # Launch Satisfactory
-Start-Process "steam://rungameid/526870" # Satisfactory Steam ID
+Start-Process $game # Satisfactory Steam ID
 
 # Wait for the game to exit
-$game = Get-Process -Name "FactoryGame" -ErrorAction SilentlyContinue
-while ($game -ne $null) {
+$gameProcess = Get-Process -Name "FactoryGameSteam" -ErrorAction SilentlyContinue
+while ($null -ne $gameProcess) {
     Start-Sleep -Seconds 5
-    $game = Get-Process -Name "FactoryGame" -ErrorAction SilentlyContinue
+    $gameProcess = Get-Process -Name "FactoryGameSteam" -ErrorAction SilentlyContinue
 }
 
 # After game exit, push the save file back to GitHub
 Copy-Item "$savePath\$saveFile" "$repoPath\$saveFile" -Force
-cd $repoPath
+Set-Location $repoPath
 
 # Get the current date and time
 $currentDate = Get-Date -Format "yyyy-MM-dd"
